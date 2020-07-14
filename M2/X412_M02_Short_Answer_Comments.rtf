@@ -1,0 +1,43 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fmodern\fcharset0 CourierNewPSMT;\f1\fmodern\fcharset0 CourierNewPS-BoldMT;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11960\viewh10580\viewkind1
+\deftab720
+\pard\pardeftab720\ri0\partightenfactor0
+
+\f0\fs20 \cf0 Unit 2 Short Answers Grade = 97\
+\
+
+\f1\b Question 1: (19/20 points) Why is a C/C++ program divided into multiple source files (modules), and why do they use distinctive filename extensions such as .cpp and .h?
+\f0\b0   Below is a complete explanation of what I consider to be relevant to this course.\
+The primary distinction and purpose for having both .h and .cpp files is to separate functionality.  The .h files typically contain the function (and class) prototypes whereas the .cpp file contain the function (and class) definitions.  This allows all modules in a large program to be developed and compiled separately without alsl functions (and classes) being fully coded and compiled for each .cpp module.  The structure and interfaces can first be designed using the .h files with the .cpp files developed later.  This also facilitates multiple programmers dividing up the coding effort for large projects and coding the project simultaneously.  A typical implementation is to create a module with similar type functions, like the Standard C/C++ Library functions: "math", "string", "stdio", "time", etc..  Each of these modules contain both a .h and .cpp component.  When developing new programs, the .h file is typically created first and defines the interface to the function definitions contained in the .cpp component of that module.  All modules calling the functions in that .h file can then be compiled without the function definitions existing in the .cpp modules.  This can be accomplished because the .h modules are typically associated with the #include pre-compiler directive which copies and pastes the module into the existing source code prior to compiling.  This can only be accomplished because the .h file with the prototypes is separate from the .cpp source file containing the definitions.\
+\
+There is typically a separate .cpp module that contains the function main() and the user interface component of the program.  Although no standard exists as to the name of this module, it has a unique identifying name such as xxx_driver.cpp or xxx_main.cpp.  This module typically does not have a .h file associated with it because all functions that this module calls are usually external to the driver module.  This is related to question 2 and it's implementation for larger programs containing multiple modules.\
+\
+For this C++ on-line class, please adhere to this structure when developing your code.  All programs for this course should have at a minimum of three modules.  A driver module containing the function main() and the user interface with at least two additional modules: xxx.h and xxx.cpp.  For each .h file, sometimes provided as part of the programming assignment, there should be a corresponding .cpp module that contains the definition of what is in the .h module.  The xxx.h module contains the class and member function prototypes whereas the corresponding xxx.cpp module contains the class and member function definitions.  For several of the programming exercises in this course it might even make sense to have 5 or 7 modules when separating the program up into modules of similar functionality such as "car", "boat", "employee", "manager", etc.\
+\
+\
+
+\f1\b Question 2: (19/20 points) What is the difference between a pointer and reference?
+\f0\b0   Here is just a little more specific detail.\
+Both pointers and references contain the addresses that point to the location of a variable.  A pointer is generic and can be assigned and point to many different variables, objects and/or functions during its lifetime but a reference can refer to only one object during its lifetime.   When using pointers, the address must be de-referenced using the *, whereas when using reference no operator is required.  Another main difference is that a pointer can directly manipulate the address unlike references that act only as an alias to the variable.\
+\
+\
+
+\f1\b Question 3: (20/20 points) What is the function of "const" and what are some practical applications?
+\f0\b0 \
+The const is used to make symbolic constants. You can initialize a variable to a constant value using const. Once a value is initialized an attempt to change the variable will result in error. It can be used in functions when parameters are passed by value, to make sure that a function will not accidentally modify a value of a parameter. It is also used to give variable a constant value, e.g. array size. When we need to make array larger or smaller, we just change it in one place.\
+\
+\
+
+\f1\b Question 4: (19/20 points) Summarize what function overloading is and when to use it.
+\f0\b0 \
+The function overloading is when you attach more than one function to the same name. You can attach multiple function to the same name if they have different argument signature list (quantity, order, type, return type, etc). The compiler picks the correct version of a function depending on the arguments in the called function. Function overloading is used for functions that have same basic task, but with different forms of data. e.g. you can write different print functions depending on if the data is string or float.\
+\
+\
+
+\f1\b Question 5: (20/20 points) Describe the difference between a using declaration and a using directive.
+\f0\b0 \
+The using declaration makes available a single name from a namespace whereas using directive makes available all the names in namespace. The using declaration has a scope corresponding to the region in which the using declaration occurs. The using directive has scope of smallest declarative region containing both using declaration and the namespace itself. \
+}

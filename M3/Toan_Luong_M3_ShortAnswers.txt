@@ -1,0 +1,45 @@
+1. What is the difference between a class and an object?
+----
+
+"A class is a user-defined type, and an object is an instance of a class. This means an object is a variable of that type or the equivalent of a variable, such as memory allocated by new according to the class specification. Each object holds its own copies of the data portion of a class declaration, but they share the class methods." (page 558, chapter 10 of C++ Primer Plus)
+
+2. In general, why is it a bad idea to make data members public?
+----
+
+Data should be put into private section of a class for encapsulation. It's a good idea to hide data and implementation details so that
+- Avoid bad actors to access data directly that can lead to data corruption and integrity
+- Absolve class users from needing to know how the data is represented
+- Separate implementation details from design interface so that code maintenance is easier and avoid code breaking on the users' ends
+
+3. What are the similarities and differences of structures and classes? When do you use one versus the other in C++?
+----
+
+Both Structures and Classes can have member functions and public/private visibility labels, use inheritance, be templated. Both can be used effectively to abstract implementations.
+
+Differences:
+- Default type for a Class is set Private. Structure is often set Public.
+- Class has an interface so more separation from end users. Structures cannot hide its implementation details.
+- Classes are more suitable for complicated architecture. Structures are more suitable for representing pure data objects.
+
+4. What are the advantages and disadvantages of using defaultable parameters?
+----
+
+"A default argument is a value that's used automatically if users omit the corresponding actual argument from a function call"
+
+Advantages are to:
+- Provide flexibility and avoid errors if users don't specify other requirements by operating on some default conditions
+- Simplify code by reducing "the number of constructors, methods, and method overloads have to be defined".
+
+Disadvantages are:
+- Make it hard to debug since errors are not thrown when wrong/missing inputs are provided
+- End users might not see other default conditions leading to unwanted results
+
+5. Why might it be hazardous to overload comparison operators?
+----
+
+Main ideas come from https://cafe.elharo.com/programming/operator-overloading-considered-harmful/
+
+A couple disadvantages are:
+- Users might not be aware that comparison operators are not defined by convention.
+- Operators can be ambiguous in meaning i.e. "it's not clear to adds two database records or subtracts two IP addresses". This can lead to illegible code.
+- Operators should follow "transitivity, commutativity, and distributivity" algebraic rules, for example if a == b then b == a. If not done properly, can lead to complicated bugs and confuse users.

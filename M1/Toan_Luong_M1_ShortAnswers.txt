@@ -1,0 +1,30 @@
+1. List at least five good reasons for using functions in code development.
+
+- Reusability: different processes can reuse the same logic
+- Improve readability: source code can be shorter and functions are defined in a different file
+- Easier to test/debug: functions isolate the programs into separate logics so can investigate independently
+- Allow for modular programming: different people can work on different functions or different versions of the same function
+- Encapsulation: hide the impelemtation details to allow better abstraction
+
+2. Why do we use function prototypes?
+
+Because a function prototype:
+- Tells What variable types are involvedW
+- Describes what information sent to the function and what information got send back
+
+3. What does the following statement do? using namespace std;
+
+This directive will let the program to use all the "std" namespaces so it is no need to type "std:cout". Without the directive, the program
+will look for "cout" and "cin" variables and throw Undefined errors
+
+4. In C++, what is the maximum character length for variable names?
+
+According to page 82 of C++ Primer, "C++ places no limits on the length of a name, and all characters in a name are significant.
+However, some platforms might have their own length limits".
+
+5. When possible, why is it preferred to use integer data types instead of floating point?
+
+Integers might be preferred because of:
+- Lower memory footprints
+- "Richer" and more available types: long, short, etc
+- Floats are slower and can lose precision

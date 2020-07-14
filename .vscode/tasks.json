@@ -1,0 +1,113 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build M2",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-o",
+                "M2/hello",
+                "M2/hello_driver.cpp",
+                "M2/hello_interface.cpp"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Build M1",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-o",
+                "M1/hello",
+                "M1/hello.cpp"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Build Poker.c",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-ansi",
+                "-DNDEBUG",
+                "-pedantic",
+                "-Wall",
+                "-o",
+                "bin/Poker",
+                "Instructions12/PokerProbabilitySkeleton/Main.c",
+                "Instructions12/PokerProbabilitySkeleton/Classify.c",
+                "Instructions12/PokerProbabilitySkeleton/Tally.c",
+                "Instructions12/PokerProbabilitySkeleton/UnitTests.c",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Build CircularQueue.c",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-ansi",
+                // "-DNDEBUG",
+                "-pedantic",
+                "-Wall",
+                "-o",
+                "bin/CircularQueue",
+                "Instructions13/CircularQueueSkeleton/Queue.c",
+                "Instructions13/CircularQueueSkeleton/QueueTester.c",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Build MazeSolver.c",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-ansi",
+                // "-DNDEBUG",
+                "-pedantic",
+                "-Wall",
+                "-o",
+                "bin/MazeSolver",
+                "Instructions14/MazeSolverSkeleton/MazeData.c",
+                "Instructions14/MazeSolverSkeleton/MazeSolver.c",
+                "Instructions14/MazeSolverSkeleton/MazeFile.c",
+                "Instructions14/MazeSolverSkeleton/Queue.c",
+                "Instructions14/MazeSolverSkeleton/main.c",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+    ]
+}

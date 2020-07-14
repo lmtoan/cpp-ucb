@@ -1,0 +1,32 @@
+1. Why is a C/C++ program divided into multiple source files (modules), and why do they use distinctive filename extensions such as .cpp and .h?
+
+According to Module 2.5, splitting into multiple source files:
+- Helps to organize functionality,
+- Provides different scopes and extents for variables and functions,
+- Allows multiple programmers to work on the same code in an effective manner, and
+- Enables programmers to reuse code.
+
+The .h file contains only function prototypes, necessary for the compiler to recognize syntax before reading in core functions' codes.
+
+2. What is the difference between a pointer and reference?
+
+References tend to be used as function parameters and act as an alias for previously-defined variable. Unlike pointer, references cannot be reassigned and must be declared during
+initialization. We can chain pointer and do pointer arithmetics but not references.
+
+3. What is the function of "const" and what are some practical applications?
+
+const is helpful to enforce immutability of information, allow functions to process both const/non-const actual arguments, and generate/use a temporary variable
+- Declare formal reference arguments as const whenever appropriate
+
+4. Summarize what function overloading is and when to use it.
+
+Function loading allows functions to have the same name but carry different signatures or argument lists. It is useful for:
+- Functions that doing the same thing but accommodate different types of inputs
+- Situations where default arguments are not sufficient
+
+5. Describe the difference between a using declaration and a using directive.
+
+According to page 486, "the using declaration lets you make particular identifiers available, and the using directive makes the entire namespace accessible".
+- "using-directives for namespaces and using-declarations for namespace members"
+- A directive make "all the names in the namespace available without the use of the scope-resolution operator" like putting "using namespace std;" at the top
+- Might cause ambiguity because the explicit namespaces are hidden
