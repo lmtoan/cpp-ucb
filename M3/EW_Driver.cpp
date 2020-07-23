@@ -1,41 +1,32 @@
-// MODULE:		distanc1.cpp
-// PROGRAMMER:	Gary J. Blair
-// LANGUAGE:	C++
-// DATE:		96/04/11
-//
+// FILENAME: EW_Driver.cpp
+// PROGRAMMER: Toan Luong
+// DATE: 07/23/2020
+// COMPILER: MinGW-w64 GCC
+// REQUIRED: EnglishWeight.cpp, EnglishWeight.h
 // PURPOSE:
-//		Provide a type for English distances.
-//		Illustrate operator overloading.
+//    Provide interfaces to enter 2 weights and a constant.
+//    Perform 6 demo operations.
 
-#include <iostream.h>
-#include <stdlib.h>
+#include "EnglishWeight.h"
+#include <iostream>
 
-typedef struct {
-    int feet;
-    double inches;
-} Distance;
-
-Distance operator+(Distance &lhs, Distance &rhs);
-
-void main(void) {
-    Distance a = {16, 5.0};
-    Distance b = {17, 9.0};
-    Distance total;
-
-    total = a + b;
-    cout << "The total distance is "
-         << total.feet << "'"
-         << total.inches << "\"\n";
-}
-
-Distance operator+(Distance &lhs, Distance &rhs) {
-    Distance sum;
-
-    sum.feet = lhs.feet + rhs.feet;
-    sum.inches = lhs.inches + rhs.inches;
-    if (sum.inches >= 12.0) {
-        sum.inches -= 12.0;
-        ++sum.feet;
-    }
-    return sum;
+int main() {
+    int xp, xo;
+    int yp, yo;
+    double n;
+    std::cout << "Enter 2 weights in pounds and ounces:\n";
+    std::cin >> xp >> xo;
+    std::cin >> yp >> yo;
+    std::cout << "Enter a number constant:\n";
+    std::cin >> n;
+    EnglishWeight ew1(xp, xo);
+    EnglishWeight ew2(yp, yo);
+    std::cout << ew1 << " + " << ew2 << " = " << ew1 + ew2 << std::endl;
+    std::cout << ew1 << " - " << ew2 << " = " << ew1 - ew2 << std::endl;
+    std::cout << ew1 << " / " << ew2 << " = " << ew1 / ew2 << std::endl;
+    std::cout << ew1 << " * " << n << " = " << ew1 * n << std::endl;
+    std::cout << n << " * " << ew1 << " = " << n * ew1 << std::endl;
+    std::cout << ew1 << " / " << n << " = " << ew1 / n << std::endl;
+    std::cout << ew2 << " / " << n << " = " << ew2 / n << std::endl;
+    return 0;
 }

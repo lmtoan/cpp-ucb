@@ -1,91 +1,73 @@
-// MODULE:		distance.cpp
-// PROGRAMMER:	Gary J. Blair
-// LANGUAGE:	C++
-// DATE:		96/04/11
-//
+// FILENAME: EnglishWeight.cpp
+// PROGRAMMER: Toan Luong
+// DATE: 07/23/2020
+// COMPILER: MinGW-w64 GCC
+// REQUIRED: EnglishWeight.h, EW_Driver.cpp
 // PURPOSE:
-//		Implement the Distance class.
+//    Provide definitions for EnglishWeight class.
 
-#include "distance.h"
-#include <iostream.h>
-#include <stdlib.h>
+#include "EnglishWeight.h"
+#include <iostream>
 
-// The no argument constructor initializes a Distance to 0'0".
-
-Distance::Distance() {
-    feet = 0;
-    inches = 0.0;
+EnglishWeight::EnglishWeight() {
+    pounds = ounces = 0;
 }
-
-// Initialize a Distance to the specified value.
-
-Distance::Distance(int ft, double in) {
-    feet = ft;
-    inches = in;
+EnglishWeight::EnglishWeight(int h, int m) {
+    pounds = h;
+    ounces = m;
 }
-
-// Define + that operates on Distance + Distance.
-
-Distance Distance::operator+(Distance &rhs) {
-    int sum_feet;
-    double sum_inches;
-
-    sum_feet = feet + rhs.feet;
-    sum_inches = inches + rhs.inches;
-    if (sum_inches >= 12.0) {
-        sum_inches -= 12.0;
-        ++sum_feet;
-    }
-    return Distance(sum_feet, sum_inches);
+EnglishWeight EnglishWeight::operator+(const EnglishWeight &w) const {
+    EnglishWeight sum;
+    sum.ounces = ounces + w.ounces;
+    sum.pounds = pounds + w.pounds + sum.ounces / 16;
+    sum.ounces %= 16;
+    return sum;
 }
-
-// Define + that operates on Distance + int which means add feet.
-
-Distance Distance::operator+(int rhs) {
-    return *this + Distance(rhs, 0.0);
+EnglishWeight EnglishWeight::operator-(const EnglishWeight &w) const {
+    EnglishWeight diff;
+    int tot1, tot2;
+    tot1 = w.ounces + 16 * w.pounds;
+    tot2 = ounces + 16 * pounds;
+    diff.ounces = (tot2 - tot1) % 16;
+    diff.pounds = (tot2 - tot1) / 16;
+    return diff;
 }
-
-// Define + that operates on Distance + double which means add inches.
-
-Distance Distance::operator+(double rhs) {
-    return *this + Distance(0, rhs);
+EnglishWeight EnglishWeight::operator/(const EnglishWeight &w) const {
+    EnglishWeight diff;
+    int tot1, tot2;
+    tot1 = w.ounces + 16 * w.pounds;
+    tot2 = ounces + 16 * pounds;
+    diff.ounces = (tot2 / tot1) % 16;
+    diff.pounds = (tot2 / tot1) / 16;
+    return diff;
 }
-
-// Define + that operates on int + Distance which means add feet.
-
-Distance operator+(int lhs, Distance &rhs) {
-    int sum_feet;
-    double sum_inches;
-
-    sum_feet = lhs + rhs.feet;
-    sum_inches = rhs.inches;
-    return Distance(sum_feet, sum_inches);
+EnglishWeight EnglishWeight::operator*(double mult) const {
+    EnglishWeight result;
+    long totalounces = pounds * mult * 16 + ounces * mult;
+    result.pounds = totalounces / 16;
+    result.ounces = totalounces % 16;
+    return result;
 }
-
-// Define + that operates on double + Distance which means add inches.
-
-Distance operator+(double lhs, Distance &rhs) {
-    return rhs + lhs;
+EnglishWeight EnglishWeight::operator/(double mult) const {
+    EnglishWeight result;
+    long totalounces = pounds * 16 / mult + ounces / mult;
+    result.pounds = totalounces / 16;
+    result.ounces = totalounces % 16;
+    return result;
 }
-
-// Define stream insertion operator for Distances.
-
-ostream &operator<<(ostream &str, Distance &d) {
-    str << d.feet << "'" << d.inches << "\"";
-    return str;
+std::ostream &operator<<(std::ostream &os, const EnglishWeight &w) {
+    os << w.pounds << " pounds, " << w.ounces << " ounces";
+    return os;
 }
-
-// Define stream extraction operator for Distances.
-
-istream &operator>>(istream &str, Distance &d) {
-    str >> d.feet;
+std::istream &operator>>(std::istream &str, EnglishWeight &w) {
+    str >> w.pounds;
     if (str.get() != '\'') {
-        cerr << "*** Error extracting Distance.\n";
+        std::cerr << "*** Error extracting EnglishWeight.\n";
         exit(1);
     }
-    str >> d.inches;
+    str >> w.ounces;
     if (str.get() != '"') {
-        cerr << "*** Error extracting Distance.\n";
+        std::cerr << "*** Error extracting EnglishWeight.\n";
         exit(1);
     }
     return str;
