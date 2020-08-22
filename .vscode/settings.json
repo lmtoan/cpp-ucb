@@ -39,7 +39,8 @@
         "xmemory0": "cpp",
         "xstddef": "cpp",
         "xtr1common": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "fstream": "cpp"
     },
     "python.pythonPath": "c:\\code\\envs\\ds\\Scripts\\python.exe"
 }

@@ -1,0 +1,26 @@
+1. What are the advantages of the new operator over the C library functions malloc, etc.?
+
+- New operator can figure out how many bytes needed while malloc requires sizeof
+- New operator can make a call to a Constructor
+- New operator can be overloaded
+- New operator will return a pointer to that memory block with that type, enable initializing the object while allocating memory
+
+2. How do you know which constructor is the copy constructor?
+
+Copy constructor can be used to copy an object to another object. It has the format Class_name(const Class_name &); and takes a constant reference to a class object as its argument. This constructor is invoked when performing object copying operations.
+
+3. How are the copy constructor and the overloaded assignment operator different?
+
+- Overloaded assignment operator is used when assigning 1 object to another. Copy constructor can initialize a new object, while operator only copies values.
+- Objects initialized by copy constructor can have different memory locations. Variables assigned by operators will reference the same location
+- Compiler will provide a copy constructor automatically, but will not overload assignment operator (just do a bitwise copy)
+
+4. When does the copy constructor get used?
+
+Useful for:
+- Initialize an object from an existing object (as argument) and perform memberwise copying. Default copy constructor provides shallow copy
+- Passing an object by value involves invoking a copy constructor
+
+5. In the dynamic array example, we apply the subscript operator to something that isn't even an array. How is this possible?
+
+It is possible by operator overloading declared in function int& DynamicIntArray::operator[]( long subscript ). The custom function will first verify if the subscript index i is valid and return a reference to the i-th element of the dynamically allocated memory if valid.

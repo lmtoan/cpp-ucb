@@ -2,13 +2,72 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Build M5",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-o",
+                "M5/distConv.exe",
+                "M5/conversion_driver.cpp",
+                "M5/dist.cpp"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Build M4",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-o",
+                "M4/stack.exe",
+                "M4/stack_driver.cpp",
+                // "M4/postfix.cpp",
+                "M4/dblstk.cpp"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Build M3",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-o",
+                // "M3/distance.cpp",
+                // "M3/Distanc1.cpp"
+                // "M3/time.exe",
+                // "M3/mytime2.cpp",
+                // "M3/usetime2.cpp",
+                "M3/EW.exe",
+                "M3/EW_driver.cpp",
+                "M3/EnglishWeight.cpp"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
             "label": "Build M2",
             "type": "shell",
             "command": "g++",
             "args": [
-                "-g",
                 "-o",
-                "M2/hello",
+                "M2/hello.exe",
                 "M2/hello_driver.cpp",
                 "M2/hello_interface.cpp"
             ],
@@ -25,9 +84,8 @@
             "type": "shell",
             "command": "g++",
             "args": [
-                "-g",
                 "-o",
-                "M1/hello",
+                "M1/hello.exe",
                 "M1/hello.cpp"
             ],
             "group": {
